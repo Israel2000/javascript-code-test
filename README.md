@@ -2,7 +2,7 @@
 
 // Problem 1 - What is the answer
 
-// <br /> 
+<br /> 
 //var answer = 1 + 2 + '3'; <br />
 // answer =>  3+ '3' = 33 <br/>
 // console.log(answer);
@@ -16,17 +16,17 @@
 
  
 
-// Problem 3
+// Problem 3 <br/>
 // var members = [
 //   {name: 'James Doe', age: 27},
 //   {name: '_Peter Test', age: 25},
 //   {name: 'Sara Tyler', age: 15},
 //   {name: 'Tom Bakers', age: 16},
 //   {name: 'verylongnamesnotfit asdewoiasdf', age: 31}
-// ];
+// ]; <br/>
 
-// // sort members array by age and assign it to sortedMembers
-// var sortedMembers = members : {age.sort();
+// // sort members array by age and assign it to sortedMembers <br />
+// var sortedMembers = members : {age.sort(); <br />
 
 // console.log(sortedMembers);
 
