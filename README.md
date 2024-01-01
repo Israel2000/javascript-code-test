@@ -1,7 +1,6 @@
 # javascript-code-test
 
 // Problem 1 - What is the answer
-
 <br /> 
 //var answer = 1 + 2 + '3'; <br />
 // answer =>  3+ '3' = 33 <br/>
@@ -31,6 +30,7 @@
 
 // console.log(sortedMembers);
 
+----------------------------------
 
 // Problem 4
 // deep copy the following array to copiedArray
