@@ -9,7 +9,8 @@
  
 // Problem 2
 // var answer2 = 1 + 2 * '3';
-// // // answer => 1 + 6 = 7
+// Answer: 
+//first multiply the add answer => 1 + 6 = 7
 // console.log(answer2);
 
  
