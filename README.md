@@ -6,7 +6,7 @@
 //var answer = 1 + 2 + '3'; <br />
 // answer =>  3+ '3' = 33 <br/>
 // console.log(answer);
-
+------------------------------------
 <br/>
 // Problem 2
 // var answer2 = 1 + 2 * '3'; <br/>
@@ -14,7 +14,7 @@
 //first multiply the add answer => 1 + 6 = 7<br/>
 // console.log(answer2);
 
- 
+ -----------------------------------
 
 // Problem 3 <br/>
 // var members = [
