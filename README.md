@@ -6,6 +6,7 @@
 //var answer = 1 + 2 + '3'; <br />
 // answer =>  3+ '3' = 33 <br/>
 // console.log(answer);
+
 ------------------------------------
 <br/>
 // Problem 2
