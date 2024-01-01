@@ -2,11 +2,12 @@
 
 // Problem 1 - What is the answer
 
-// var answer = 1 + 2 + '3';
-// answer =>  3+ '3' = 33
+// <br /> 
+//var answer = 1 + 2 + '3'; <br />
+// answer =>  3+ '3' = 33 <br/>
 // console.log(answer);
 
- 
+<br/>
 // Problem 2
 // var answer2 = 1 + 2 * '3'; <br/>
 // Answer: <br/>
