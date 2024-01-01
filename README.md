@@ -8,7 +8,7 @@
 
 ------------------------------------
 <br/>
-// Problem 2
+// Problem 2 <br />
 // var answer2 = 1 + 2 * '3'; <br/>
 // Answer: <br/>
 //first multiply the add answer => 1 + 6 = 7<br/>
