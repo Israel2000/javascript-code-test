@@ -17,7 +17,7 @@
  -----------------------------------
 
 // Problem 3 <br/>
-// var members = [
+// var members = [ <br/>
 //   {name: 'James Doe', age: 27},
 //   {name: '_Peter Test', age: 25},
 //   {name: 'Sara Tyler', age: 15},
