@@ -34,37 +34,37 @@ var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 // console.log(sortedMembers);
 
 ----------------------------------
-
+<br/>
 // Problem 4
 // deep copy the following array to copiedArray
 // const source = [1,2,3,4];
 // const copiedArray =
 // console.log(copiedArray);
 
+<br/>
+// Problem 5<br/>
+// // Add id filed for each record and assign the index + 1 <br/>
+// // so the new array should be like the following: <br/>
+// const newMembers = [ <br/>
+//   {id: 1, name: 'James Doe', age: 27}, <br/>
+//   {id: 2, name: '_Peter Test', age: 25}, <br/> 
+//   {id: 3, name: 'Sara Tyler', age: 15}, <br/>
+//   {id: 4, name: 'Tom Bakers', age: 16}, <br/>
+//   {id: 5, name: 'verylongnamesnotfit asdewoiasdf', age: 31} <br/>
+// ];<br/>
+<br/>
+const ourMembers = [ <br/>
+  {name: 'James Doe', age: 27}, <br/>
+  {name: '_Peter Test', age: 25}, <br/>
+  {name: 'Sara Tyler', age: 15}, <br/>
+  {name: 'Tom Bakers', age: 16}, <br/>
+  {name: 'verylongnamesnotfit asdewoiasdf', age: 31} <br/>
+]; <br/>
 
-// Problem 5
-// // Add id filed for each record and assign the index + 1
-// // so the new array should be like the following:
-// const newMembers = [
-//   {id: 1, name: 'James Doe', age: 27},
-//   {id: 2, name: '_Peter Test', age: 25},
-//   {id: 3, name: 'Sara Tyler', age: 15},
-//   {id: 4, name: 'Tom Bakers', age: 16},
-//   {id: 5, name: 'verylongnamesnotfit asdewoiasdf', age: 31}
-// ];
-
-const ourMembers = [
-  {name: 'James Doe', age: 27},
-  {name: '_Peter Test', age: 25},
-  {name: 'Sara Tyler', age: 15},
-  {name: 'Tom Bakers', age: 16},
-  {name: 'verylongnamesnotfit asdewoiasdf', age: 31}
-];
-
-// const newMembers = 
-//console.log(newMembers);
+// const newMembers = <br/>
+//console.log(newMembers); <br/>
  
-
+-----------------------------------
 
 // Problem 6
 // function mockServer(name) {
