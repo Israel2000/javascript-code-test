@@ -26,7 +26,8 @@
 // ]; <br/>
 
 // // sort members array by age and assign it to sortedMembers <br />
-<br /> // Answer: Sort members array by age and assign it to sortedMembers
+<br /> 
+// Answer: Sort members array by age and assign it to sortedMembers <br/>
 var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 // var sortedMembers = members : {age.sort(); <br />
 
