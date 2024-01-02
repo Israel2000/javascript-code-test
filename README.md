@@ -18,11 +18,11 @@
 
 // Problem 3 <br/>
 // var members = [ <br/>
-//   {name: 'James Doe', age: 27},
-//   {name: '_Peter Test', age: 25},
-//   {name: 'Sara Tyler', age: 15},
-//   {name: 'Tom Bakers', age: 16},
-//   {name: 'verylongnamesnotfit asdewoiasdf', age: 31}
+//   {name: 'James Doe', age: 27}, <br/>
+//   {name: '_Peter Test', age: 25}, <br/>
+//   {name: 'Sara Tyler', age: 15}, <br/>
+//   {name: 'Tom Bakers', age: 16}, <br />
+//   {name: 'verylongnamesnotfit asdewoiasdf', age: 31} <br/>
 // ]; <br/>
 
 // // sort members array by age and assign it to sortedMembers <br />
