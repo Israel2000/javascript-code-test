@@ -35,8 +35,7 @@ var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 // Problem 4 <br/>
 // deep copy the following array to copiedArray <br/>
 // const source = [1,2,3,4]; <br>
-const source = [1, 2, 3, 4]; <br>
-
+<br>
 //const copiedArray = source.map(element => {<br/>
     // If the element is an array or an object, perform a deep copy <br>
     //if (Array.isArray(element) || typeof element === 'object') { <br>
