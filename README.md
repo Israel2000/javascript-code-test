@@ -35,20 +35,20 @@ var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 // Problem 4 <br/>
 // deep copy the following array to copiedArray <br/>
 // const source = [1,2,3,4]; <br>
-const source = [1, 2, 3, 4];
+const source = [1, 2, 3, 4]; <br>
 
-//const copiedArray = source.map(element => {
-    // If the element is an array or an object, perform a deep copy
-    //if (Array.isArray(element) || typeof element === 'object') {
-        //return JSON.parse(JSON.stringify(element));
-    //} else {
-        // Otherwise, simply return the element
-       // return element;
-   // }
-});
-
-console.log(copiedArray); // Output: [1, 2, 3, 4]
-// console.log(copiedArray);
+//const copiedArray = source.map(element => {<br/>
+    // If the element is an array or an object, perform a deep copy <br>
+    //if (Array.isArray(element) || typeof element === 'object') { <br>
+        //return JSON.parse(JSON.stringify(element)); <br>
+    //} else {<br>
+        // Otherwise, simply return the element<br>
+       // return element;<br>
+   // }<br>
+});<br>
+<br>
+console.log(copiedArray); // Output: [1, 2, 3, 4] <br>
+// console.log(copiedArray);<br>
 
 ----------------------------------
 
