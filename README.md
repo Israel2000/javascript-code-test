@@ -33,14 +33,14 @@ var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 ----------------------------------
 <br/>
 // Problem 4 <br/>
-// deep copy the following array to copiedArray
-// const source = [1,2,3,4];
+// deep copy the following array to copiedArray <br/>
+// const source = [1,2,3,4]; <br>
 // const copiedArray =
 // console.log(copiedArray);
 
 ----------------------------------
 
-// Problem 5<br/>
+// Problem 5 <br/>
 // // Add id filed for each record and assign the index + 1 <br/>
 // // so the new array should be like the following: <br/>
 // const newMembers = [ <br/>
@@ -64,7 +64,7 @@ const ourMembers = [ <br/>
  
 -----------------------------------
 
-// Problem 6
+// Problem 6 <br/>
 // function mockServer(name) {
 //     return new Promise(function (resolve, reject) {
 //         if (name[0] === '_') {
