@@ -38,7 +38,8 @@ var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
 // const copiedArray =
 // console.log(copiedArray);
 
-<br/>
+----------------------------------
+
 // Problem 5<br/>
 // // Add id filed for each record and assign the index + 1 <br/>
 // // so the new array should be like the following: <br/>
