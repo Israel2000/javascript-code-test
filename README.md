@@ -17,6 +17,7 @@
  -----------------------------------
 
 // Problem 3 <br/>
+// sort members array by age and assign it to sortedMembers <br />
 // var members = [ <br/>
 //   {name: 'James Doe', age: 27}, <br/>
 //   {name: '_Peter Test', age: 25}, <br/>
@@ -25,12 +26,8 @@
 //   {name: 'verylongnamesnotfit asdewoiasdf', age: 31} <br/>
 // ]; <br/>
 
-// // sort members array by age and assign it to sortedMembers <br />
-<br /> 
-// Answer: Sort members array by age and assign it to sortedMembers <br/>
 var sortedMembers = members.slice().sort((a, b) => a.age - b.age);
-// var sortedMembers = members : {age.sort(); <br />
-
+<br/>
 // console.log(sortedMembers);
 
 ----------------------------------
