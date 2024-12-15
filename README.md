@@ -308,7 +308,13 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
 | `default` (custom)| Provides a default value for undefined inputs.                |
 | `reverse` (custom)| Reverses a string (custom implementation).                    |
 
-Would you like examples for creating additional custom pipes?
+11.  what is routing? 
+- routing is a URL pattern matching.
+- routing used to handle the navigation from one view to the next
+     - routes- this is the class used to map the component & path.
+     - router-outlet- this is the place to load the active component.
+     - routerLink- this is the directive to navigate different routes.
+-Routing Gurards - guards are interfaces already available natively in angular that let us control access to routes based on conditions we provide in the class of the interface.
 12. **What are observables?**
     Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require a subscription.
 
@@ -763,6 +769,8 @@ export class CounterStore extends ComponentStore<State> {
     - **AOT (Ahead-of-Time)**: Compiles during the build process for improved performance and smaller bundle sizes.
 
 17. **What is lazy loading?**
+   - a technique that allows users to defer the loading of certain parts of an application.
+   - it reduces the initial load time.
     Lazy loading loads feature modules asynchronously when required, improving performance. Example:
 
     ```typescript
@@ -772,10 +780,10 @@ export class CounterStore extends ComponentStore<State> {
     }
     ```
 
-18. **What is TestBed in Angular?**
+19. **What is TestBed in Angular?**
     TestBed is an API for unit testing Angular components and services. It simplifies injection, asynchronous behavior, and DOM interactions during tests.
 
-19. **What are reactive and template-driven forms?**
+20. **What are reactive and template-driven forms?**
 
 | Feature              | Reactive Forms           | Template-Driven Forms |
 |----------------------|--------------------------|------------------------|
@@ -792,20 +800,21 @@ export class CounterStore extends ComponentStore<State> {
 21. **What is the purpose of the common module?**
     The `@angular/common` module provides essential pipes, directives, and services like `ngIf`, `ngFor`, and `HttpClientModule`. It is a foundational module in Angular projects.
 
-
 22. **What is a standalone component?**
 A standalone component is a type of component that is not part of any Angular module. It provides a simplified way to build Angular applications.
 23. **What are Angular Signals?**
 A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
 24. **ViewChildren** - Purpose: Allows you to access multiple child components, directives, or DOM elements within a view.
-Usage:Use it when querying for a collection of elements or components.
+Usage: Use it when querying for a collection of elements or components.
 25. **ViewChild**
 26. **HTTPCalls** are used to interact with REST APIs or other HTTP services. The HttpClient module, provided by Angular, makes it easy to perform GET, POST, PUT, DELETE, and other HTTP requests.
-27. **ng-template** - The <ng-template> directive in Angular defines a template that is not rendered by default but can be programmatically inserted into the DOM. It is typically used for structural directives and dynamic content.
-28. **ng-content** - The <ng-content> directive is used to project content from a parent component into a child component. This is part of Angular's Content Projection mechanism.
+    - HTTP Interceptor - used to perform various tasks related to HTTP requests and responses.
+         - such as adding headers, handling errors, modifying the request or res data, logging, authentication, etc.
+28. **ng-template** - The <ng-template> directive in Angular defines a template that is not rendered by default but can be programmatically inserted into the DOM. It is typically used for structural directives and dynamic content.
+29. **ng-content** - The <ng-content> directive is used to project content from a parent component into a child component. This is part of Angular's Content Projection mechanism.
 Key Features: Facilitates reusable components that accept dynamic content.
-Supports multiple content projection with selectors.
-29. **The @HostListener decorator** in Angular is used to listen to and handle events on the host element of a directive or component. It's part of Angular's host binding capabilities, enabling you to respond to user interactions or browser events directly on the host element.
+Supports multiple content projections with selectors.
+30. **The @HostListener decorator** in Angular is used to listen to and handle events on the host element of a directive or component. It's part of Angular's host binding capabilities, enabling you to respond to user interactions or browser events directly on the host element.
 
 ## React
 
