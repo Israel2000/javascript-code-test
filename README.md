@@ -181,9 +181,9 @@
     The `@angular/common` module provides essential pipes, directives, and services like `ngIf`, `ngFor`, and `HttpClientModule`. It is a foundational module in Angular projects.
 
 
-22. What is standalone component?
-A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
-23. What are Angular Signals?
+22. **What is a standalone component?**
+A standalone component is a type of component that is not part of any Angular module. It provides a simplified way to build Angular applications.
+23. **What are Angular Signals?**
 A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
 
 
