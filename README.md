@@ -543,6 +543,208 @@ export class HttpExampleComponent {
 | Error Handling    | Uses `subscribe`          | Uses `.catch()`      |
 | Chaining          | Rich operators            | Limited `.then()`    |
 
+## NGRX Q&A Cheat Sheet
+
+### 1. **What is NgRx?**
+NgRx (Angular Reactive Extensions) is a framework for building reactive applications in Angular. It is based on Redux and RxJS for state management.
+
+---
+
+### 2. **What are the Core Concepts of NgRx?**
+- **Store**: Centralized state container for the application.
+- **Actions**: Events that describe unique changes to the state.
+- **Reducers**: Pure functions that specify how the state changes in response to actions.
+- **Selectors**: Functions to query data from the store.
+- **Effects**: Side effects that handle external interactions like HTTP calls.
+
+---
+
+### 3. **What is a Store?**
+The Store is a centralized container that holds the application state. It is immutable and acts as the single source of truth for the app.
+
+#### Example:
+```typescript
+import { Store } from '@ngrx/store';
+
+constructor(private store: Store<{ count: number }>) {}
+
+this.store.select('count').subscribe(value => console.log(value));
+```
+
+---
+
+### 4. **What is an Action?**
+Actions are plain objects that describe an event or change in the application.
+
+#### Example:
+```typescript
+import { createAction } from '@ngrx/store';
+
+export const increment = createAction('[Counter] Increment');
+export const decrement = createAction('[Counter] Decrement');
+```
+
+---
+
+### 5. **What is a Reducer?**
+Reducers are pure functions that specify how the state changes in response to an action.
+
+#### Example:
+```typescript
+import { createReducer, on } from '@ngrx/store';
+import { increment, decrement } from './counter.actions';
+
+export const initialState = 0;
+
+export const counterReducer = createReducer(
+  initialState,
+  on(increment, state => state + 1),
+  on(decrement, state => state - 1)
+);
+```
+
+---
+
+### 6. **What is a Selector?**
+Selectors are functions used to retrieve specific pieces of state from the store.
+
+#### Example:
+```typescript
+import { createSelector } from '@ngrx/store';
+
+export const selectFeature = (state: AppState) => state.feature;
+export const selectFeatureCount = createSelector(
+  selectFeature,
+  feature => feature.count
+);
+```
+
+---
+
+### 7. **What are Effects?**
+Effects handle side effects in an NgRx application, such as HTTP requests or logging. They listen for actions and return new actions.
+
+#### Example:
+```typescript
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { map, mergeMap } from 'rxjs/operators';
+import { loadItemsSuccess } from './actions';
+import { HttpClient } from '@angular/common/http';
+
+export class ItemsEffects {
+  loadItems$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType('[Items] Load Items'),
+      mergeMap(() =>
+        this.http.get('/api/items').pipe(
+          map(items => loadItemsSuccess({ items }))
+        )
+      )
+    )
+  );
+
+  constructor(private actions$: Actions, private http: HttpClient) {}
+}
+```
+
+---
+
+### 8. **What is Entity State?**
+NgRx Entity simplifies state management for collections of data by providing utilities like selectors and reducers.
+
+#### Example:
+```typescript
+import { createEntityAdapter } from '@ngrx/entity';
+
+export interface Item {
+  id: string;
+  name: string;
+}
+
+const adapter = createEntityAdapter<Item>();
+
+export const initialState = adapter.getInitialState();
+```
+
+---
+
+### 9. **What is Store DevTools?**
+Store DevTools is an NgRx extension that integrates with Redux DevTools to debug the store and actions.
+
+#### Installation:
+```bash
+npm install @ngrx/store-devtools
+```
+
+#### Example:
+```typescript
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+@NgModule({
+  imports: [
+    StoreDevtoolsModule.instrument({ maxAge: 25 })
+  ]
+})
+export class AppModule {}
+```
+
+---
+
+### 10. **What is the Role of `createFeature`?**
+`createFeature` simplifies feature state setup by combining reducers and selectors for modularity.
+
+#### Example:
+```typescript
+import { createFeature, createReducer, on } from '@ngrx/store';
+
+const feature = createFeature({
+  name: 'counter',
+  reducer: createReducer(
+    0,
+    on(increment, state => state + 1),
+    on(decrement, state => state - 1)
+  )
+});
+
+export const {
+  name,
+  reducer,
+  selectCounterState,
+  selectCounter,
+} = feature;
+```
+
+---
+
+### 11. **What are NgRx Data and NgRx ComponentStore?**
+- **NgRx Data**: Provides a higher-level abstraction for managing entity collections.
+- **NgRx ComponentStore**: Manages local state for a specific component or a small group of components.
+
+#### Example (ComponentStore):
+```typescript
+import { ComponentStore } from '@ngrx/component-store';
+
+interface State {
+  count: number;
+}
+
+export class CounterStore extends ComponentStore<State> {
+  constructor() {
+    super({ count: 0 });
+  }
+
+  readonly increment = this.updater(state => ({ count: state.count + 1 }));
+}
+```
+
+---
+
+### 12. **What are Common NgRx Use Cases?**
+- Managing global state like user authentication or settings.
+- Tracking asynchronous data from APIs.
+- Centralizing and debugging application events.
+
+
+
 15. **What is Angular Router?**
     Angular Router facilitates navigation between views in single-page applications (SPAs). Example of lazy loading:
 
