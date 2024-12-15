@@ -1,85 +1,190 @@
 # Full-Stack Interview Q&A
 
-## Angular
-1. What are directives?
-   What is the purpose of *ngFor directive?
-We use Angular *ngFor directive in the template to display each item in the list. For example, here we can iterate over a list of users:
-<li *ngFor="let user of users">
-  {{ user }}
-</li>
-The user variable in the *ngFor double-quoted instruction is a template input variable.
+### Angular FAQs
 
-What is the purpose of *ngIf directive?
-Sometimes an app needs to display a view or a portion of a view only under specific circumstances. The Angular *ngIf directive inserts or removes an element based on a truthy/falsy condition. Let's take an example to display a message if the user age is more than 18:
-<p *ngIf="user.age > 18">You are not eligible for student pass!</p>
-Note: Angular isn't showing and hiding the message. It is adding and removing the paragraph element from the DOM. That improves performance, especially in the larger projects with many data bindings.
-3. What are lifecycle hooks available?
-Angular application goes through an entire set of processes or has a lifecycle right from its initiation to the end of the application. The representation of lifecycle in pictorial representation as follows,
+1. **What are directives?**
+   Directives add behavior to an existing DOM element or component instance. There are mainly three kinds of directives:
+   
+   - **Components**: Directives with a template.
+   - **Structural directives**: Change the DOM layout by adding or removing elements.
+   - **Attribute directives**: Change the appearance or behavior of an element, component, or another directive.
 
-ScreenShot
+2. **What is the purpose of the *ngFor directive?**
+   The Angular *ngFor directive iterates over a list of items and displays them in the template. Example:
 
-The description of each lifecycle method is as below,
+   ```html
+   <li *ngFor="let user of users">
+     {{ user }}
+   </li>
+   ```
+   Here, `user` is a template input variable used for each iteration.
 
-ngOnChanges: When the value of a data bound property changes, then this method is called.
-ngOnInit: This is called whenever the initialization of the directive/component after Angular first displays the data-bound properties happens.
-ngDoCheck: This is for the detection and to act on changes that Angular can't or won't detect on its own.
-ngAfterContentInit: This is called in response after Angular projects external content into the component's view.
-ngAfterContentChecked: This is called in response after Angular checks the content projected into the component.
-ngAfterViewInit: This is called in response after Angular initializes the component's views and child views.
-ngAfterViewChecked: This is called in response after Angular checks the component's views and child views.
-ngOnDestroy: This is the cleanup phase just before Angular destroys the directive/component.
+3. **What is the purpose of the *ngIf directive?**
+   The *ngIf directive conditionally includes or excludes elements in the DOM based on a truthy/falsy condition. Example:
 
-3. What is a data binding?
-Data binding is a core concept in Angular and allows to define communication between a component and the DOM, making it very easy to define interactive applications without worrying about pushing and pulling data. There are four forms of data binding(divided as 3 categories) which differ in the way the data is flowing.
-From the Component to the DOM:
+   ```html
+   <p *ngIf="user.age > 18">You are not eligible for a student pass!</p>
+   ```
+   Angular adds or removes the paragraph element from the DOM for improved performance.
 
-Interpolation: {{ value }}: Adds the value of a property from the component
+4. **What are lifecycle hooks available in Angular?**
+   Angular components have a lifecycle, with various hooks available:
 
-<li>Name: {{ user.name }}</li>
-<li>Address: {{ user.address }}</li>
-Property binding: [property]=”value”: The value is passed from the component to the specified property or simple HTML attribute
+   - `ngOnChanges`: Called when data-bound properties change.
+   - `ngOnInit`: Called after the first display of data-bound properties.
+   - `ngDoCheck`: Detects and acts on changes not detected automatically.
+   - `ngAfterContentInit`: Triggered after Angular projects external content.
+   - `ngAfterContentChecked`: Called after checking projected content.
+   - `ngAfterViewInit`: Triggered after initializing the component’s views and child views.
+   - `ngAfterViewChecked`: Called after checking the component’s views and child views.
+   - `ngOnDestroy`: Used for cleanup before Angular destroys a component.
 
-<input type="email" [value]="user.email">
-From the DOM to the Component: Event binding: (event)=”function”: When a specific DOM event happens (eg.: click, change, keyup), call the specified method in the component
+5. **What is data binding?**
+   Data binding facilitates communication between a component and the DOM. Angular supports four forms:
 
-<button (click)="logout()"></button>
-Two-way binding: Two-way data binding: [(ngModel)]=”value”: Two-way data binding allows to have the data flow both ways. For example, in the below code snippet, both the email DOM input and component email property are in sync
+   - **Interpolation**: Adds property values from the component using `{{ value }}`.
+     ```html
+     <li>Name: {{ user.name }}</li>
+     ```
+   - **Property Binding**: Passes values from the component to HTML attributes.
+     ```html
+     <input type="email" [value]="user.email">
+     ```
+   - **Event Binding**: Listens to DOM events and calls component methods.
+     ```html
+     <button (click)="logout()">Logout</button>
+     ```
+   - **Two-Way Binding**: Synchronizes data between the DOM and the component.
+     ```html
+     <input type="email" [(ngModel)]="user.email">
+     ```
 
-<input type="email" [(ngModel)]="user.email">
+6. **What is Angular CLI?**
+   Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
 
-4. What is angular CLI?
-Angular CLI(Command Line Interface) is a command line interface to scaffold and build angular apps using nodejs style (commonJs) modules. You need to install using below npm command,
+   ```bash
+   npm install -g @angular/cli
+   ```
 
-5. What is the difference between constructor and ngOnInit?
-The Constructor is a default method of the class that is executed when the class is instantiated and ensures proper initialisation of fields in the class and its subclasses. Angular, or better Dependency Injector (DI), analyses the constructor parameters and when it creates a new instance by calling new MyClass() it tries to find providers that match the types of the constructor parameters, resolves them and passes them to the constructor.
-ngOnInit is a life cycle hook called by Angular to indicate that Angular is done creating the component.
-Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work". So you should use constructor() to setup Dependency Injection and not much else. ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.
+7. **Difference between constructor and ngOnInit:**
 
-6. What is a service?
-A service is used when a common functionality needs to be provided to various modules. Services allow for greater separation of concerns for your application and better modularity by allowing you to extract common functionality out of components.
+   - **Constructor**: Initializes class members and sets up dependency injection. Avoid performing heavy tasks here.
+   - **ngOnInit**: Called after Angular initializes the component. Suitable for logic initialization and binding resolution.
 
-Let's create a repoService that can be used across components,
+8. **What is a service?**
+   A service encapsulates common functionality and promotes reusability across modules. Example:
 
-import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+   ```typescript
+   @Injectable({
+     providedIn: 'root',
+   })
+   export class MyService {}
+   ```
 
-@Injectable({ // The Injectable decorator is required for dependency injection to work
-  // providedIn option registers the service with a specific NgModule
-  providedIn: 'root',  // This declares the service with the root app (AppModule)
-})
-export class RepoService{
-  constructor(private http: Http){
-  }
+9. **What is dependency injection in Angular?**
+   Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself. Angular’s DI framework resolves services and other objects throughout the application.
 
-  fetchAll(){
-    return this.http.get('https://api.github.com/repositories');
-  }
-}
-The above service uses Http service as a dependency.
-7. What is dependency injection in Angular?
-Dependency injection (DI), is an important application design pattern in which a class asks for dependencies from external sources rather than creating them itself. Angular comes with its own dependency injection framework for resolving dependencies( services or objects that a class needs to perform its function).So you can have your services depend on other services throughout your application.
+10. **What are pipes?**
+    Pipes transform data in templates. Example:
+
+    ```typescript
+    @Component({
+      template: `<p>Birthday is {{ birthday | date }}</p>`
+    })
+    export class BirthdayComponent {
+      birthday = new Date(1987, 6, 18);
+    }
+    ```
+
+11. **Difference between pure and impure pipes:**
+
+    - **Pure pipes**: Triggered only when input values or references change.
+    - **Impure pipes**: Called on every change detection cycle, even if inputs remain unchanged.
+
+12. **What are observables?**
+    Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require subscription.
+
+    Example:
+
+    ```typescript
+    import { Observable } from 'rxjs';
+
+    const observable = new Observable(subscriber => {
+      subscriber.next('Hello');
+      subscriber.complete();
+    });
+
+    observable.subscribe(console.log);
+    ```
+
+13. **What is RxJS?**
+    RxJS is a library for reactive programming with Observables, supporting operators for composing asynchronous streams. Example usage with `HttpClient`:
+
+    ```typescript
+    import { catchError, retry } from 'rxjs/operators';
+    ```
+
+14. **Difference between promise and observable:**
+
+| Feature           | Observable                | Promise              |
+|-------------------|---------------------------|----------------------|
+| Execution         | Lazy (starts on subscribe)| Eager (executes immediately)|
+| Values            | Emits multiple values     | Emits a single value |
+| Error Handling    | Uses `subscribe`          | Uses `.catch()`      |
+| Chaining          | Rich operators            | Limited `.then()`    |
+
+15. **What is Angular Router?**
+    Angular Router facilitates navigation between views in single-page applications (SPAs). Example of lazy loading:
+
+    ```typescript
+    const routes: Routes = [
+      {
+        path: 'customers',
+        loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)
+      },
+    ];
+    ```
+
+16. **What are the different types of compilation in Angular?**
+
+    - **JIT (Just-in-Time)**: Compiles in the browser at runtime.
+    - **AOT (Ahead-of-Time)**: Compiles during the build process for improved performance and smaller bundle sizes.
+
+17. **What is lazy loading?**
+    Lazy loading loads feature modules asynchronously when required, improving performance. Example:
+
+    ```typescript
+    {
+      path: 'orders',
+      loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
+    }
+    ```
+
+18. **What is TestBed in Angular?**
+    TestBed is an API for unit testing Angular components and services. It simplifies injection, asynchronous behavior, and DOM interactions during tests.
+
+19. **What are reactive and template-driven forms?**
+
+| Feature              | Reactive Forms           | Template-Driven Forms |
+|----------------------|--------------------------|------------------------|
+| Model Setup          | Explicitly defined       | Defined in template   |
+| Data Updates         | Synchronous             | Asynchronous          |
+| Validation           | Defined in component    | Defined in template   |
+| Scalability          | Highly scalable         | Suitable for simple forms |
+
+20. **What is the difference between ngOnChanges and ngDoCheck?**
+
+    - `ngOnChanges`: Detects changes in input-bound properties.
+    - `ngDoCheck`: Custom change detection logic for detecting changes not tracked by Angular.
+
+21. **What is the purpose of the common module?**
+    The `@angular/common` module provides essential pipes, directives, and services like `ngIf`, `ngFor`, and `HttpClientModule`. It is a foundational module in Angular projects.
 
 
+22. What is standalone component?
+A standalone component is a type of component which is not part of any Angular module. It provides a simplified way to build Angular applications.
+23. What are Angular Signals?
+A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
 
 
 ## React
