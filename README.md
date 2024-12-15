@@ -6,8 +6,8 @@
    Directives add behavior to an existing DOM element or component instance. There are mainly three kinds of directives:
    
    - **Components**: Directives with a template.
-   - **Structural directives**: Change the DOM layout by adding or removing elements.
-   - **Attribute directives**: Change the appearance or behavior of an element, component, or another directive.
+   - **Structural directives**: Change the DOM layout by adding or removing elements. (eg. ngIf, ngFor...)
+   - **Attribute directives**: Change the appearance or behavior of an element, component, or another directive. (eg. ngClass, ngStyle...)
 
 2. **What is the purpose of the *ngFor directive?**
    The Angular *ngFor directive iterates over a list of items and displays them in the template. Example:
