@@ -185,7 +185,15 @@
 A standalone component is a type of component that is not part of any Angular module. It provides a simplified way to build Angular applications.
 23. **What are Angular Signals?**
 A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
-
+24. **ViewChildren** - Purpose: Allows you to access multiple child components, directives, or DOM elements within a view.
+Usage:Use it when querying for a collection of elements or components.
+25. **ViewChild**
+26. **HTTPCalls** are used to interact with REST APIs or other HTTP services. The HttpClient module, provided by Angular, makes it easy to perform GET, POST, PUT, DELETE, and other HTTP requests.
+27. **ng-template** - The <ng-template> directive in Angular defines a template that is not rendered by default but can be programmatically inserted into the DOM. It is typically used for structural directives and dynamic content.
+28. **ng-content** - The <ng-content> directive is used to project content from a parent component into a child component. This is part of Angular's Content Projection mechanism.
+Key Features: Facilitates reusable components that accept dynamic content.
+Supports multiple content projection with selectors.
+29. **The @HostListener decorator** in Angular is used to listen to and handle events on the host element of a directive or component. It's part of Angular's host binding capabilities, enabling you to respond to user interactions or browser events directly on the host element.
 
 ## React
 
