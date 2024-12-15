@@ -97,12 +97,220 @@
     ```
 
 11. **Difference between pure and impure pipes:**
-
+   
     - **Pure pipes**: Triggered only when input values or references change.
     - **Impure pipes**: Called on every change detection cycle, even if inputs remain unchanged.
+Here’s a list of commonly used **Angular pipes** along with their definitions and usage:
 
+---
+
+### **1. `uppercase` Pipe**
+- **Definition**: Transforms a string to uppercase.
+- **Usage**:
+  ```html
+  <p>{{ 'hello world' | uppercase }}</p>
+  ```
+  **Output**: `HELLO WORLD`
+
+---
+
+### **2. `lowercase` Pipe**
+- **Definition**: Transforms a string to lowercase.
+- **Usage**:
+  ```html
+  <p>{{ 'HELLO WORLD' | lowercase }}</p>
+  ```
+  **Output**: `hello world`
+
+---
+
+### **3. `titlecase` Pipe**
+- **Definition**: Capitalizes the first letter of each word in a string.
+- **Usage**:
+  ```html
+  <p>{{ 'hello world' | titlecase }}</p>
+  ```
+  **Output**: `Hello World`
+
+---
+
+### **4. `currency` Pipe**
+- **Definition**: Formats a number as a currency value.
+- **Usage**:
+  ```html
+  <p>{{ 1234.56 | currency:'USD':'symbol':'1.2-2' }}</p>
+  ```
+  **Output**: `$1,234.56`
+
+---
+
+### **5. `date` Pipe**
+- **Definition**: Formats a date value according to locale rules.
+- **Usage**:
+  ```html
+  <p>{{ '2024-12-15' | date:'long' }}</p>
+  ```
+  **Output**: `December 15, 2024`
+
+---
+
+### **6. `percent` Pipe**
+- **Definition**: Formats a number as a percentage.
+- **Usage**:
+  ```html
+  <p>{{ 0.25 | percent }}</p>
+  ```
+  **Output**: `25%`
+
+---
+
+### **7. `decimal` Pipe**
+- **Definition**: Formats a number with customizable decimal points.
+- **Usage**:
+  ```html
+  <p>{{ 1234.567 | number:'1.1-2' }}</p>
+  ```
+  **Output**: `1,234.57`
+
+---
+
+### **8. `slice` Pipe**
+- **Definition**: Extracts a portion of a string or an array.
+- **Usage**:
+  ```html
+  <p>{{ 'hello world' | slice:0:5 }}</p>
+  ```
+  **Output**: `hello`
+
+---
+
+### **9. `json` Pipe**
+- **Definition**: Converts a JavaScript object or array to JSON format.
+- **Usage**:
+  ```html
+  <pre>{{ { name: 'Angular', version: 14 } | json }}</pre>
+  ```
+  **Output**:
+  ```json
+  {
+    "name": "Angular",
+    "version": 14
+  }
+  ```
+
+---
+
+### **10. `keyvalue` Pipe**
+- **Definition**: Converts an object into an array of key-value pairs.
+- **Usage**:
+  ```html
+  <div *ngFor="let item of { name: 'Angular', version: 14 } | keyvalue">
+    {{ item.key }}: {{ item.value }}
+  </div>
+  ```
+  **Output**:
+  ```
+  name: Angular
+  version: 14
+  ```
+
+---
+
+### **11. `async` Pipe**
+- **Definition**: Subscribes to an Observable or Promise and returns the emitted value.
+- **Usage**:
+  ```html
+  <p>{{ asyncData$ | async }}</p>
+  ```
+  **Output**: Resolves and displays the value of the Observable/Promise.
+
+---
+
+### **12. `i18nPlural` Pipe**
+- **Definition**: Displays a string based on a numeric value using internationalization rules.
+- **Usage**:
+  ```html
+  <p>{{ 3 | i18nPlural: { '=0': 'no items', '=1': '1 item', 'other': '# items' } }}</p>
+  ```
+  **Output**: `3 items`
+
+---
+
+### **13. `i18nSelect` Pipe**
+- **Definition**: Displays a string based on a key-value mapping for internationalization.
+- **Usage**:
+  ```html
+  <p>{{ gender | i18nSelect: { male: 'Mr.', female: 'Ms.', other: 'Mx.' } }}</p>
+  ```
+  **Output**: `Mr.` (if `gender = 'male'`)
+
+---
+
+### **14. `default` Pipe (Custom Pipe Example)**
+- **Definition**: A custom pipe used to provide default values.
+- **Implementation**:
+  ```typescript
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({ name: 'default' })
+  export class DefaultPipe implements PipeTransform {
+    transform(value: any, defaultValue: any): any {
+      return value || defaultValue;
+    }
+  }
+  ```
+  **Usage**:
+  ```html
+  <p>{{ user.name | default:'Guest' }}</p>
+  ```
+
+---
+
+### **15. `custom` Pipe**
+- **Definition**: A user-defined pipe tailored to specific needs.
+- **Example**:
+  To create a pipe for reversing strings:
+  ```typescript
+  import { Pipe, PipeTransform } from '@angular/core';
+
+  @Pipe({ name: 'reverse' })
+  export class ReversePipe implements PipeTransform {
+    transform(value: string): string {
+      return value.split('').reverse().join('');
+    }
+  }
+  ```
+  **Usage**:
+  ```html
+  <p>{{ 'Angular' | reverse }}</p>
+  ```
+  **Output**: `ralugnA`
+
+---
+
+### **Summary**
+
+| **Pipe**         | **Description**                                                |
+|-------------------|----------------------------------------------------------------|
+| `uppercase`       | Converts text to uppercase.                                   |
+| `lowercase`       | Converts text to lowercase.                                   |
+| `titlecase`       | Capitalizes the first letter of each word.                    |
+| `currency`        | Formats numbers as currency.                                  |
+| `date`            | Formats dates and times.                                      |
+| `percent`         | Displays numbers as percentages.                              |
+| `decimal`         | Formats numbers with decimal points.                          |
+| `slice`           | Extracts a part of a string or array.                         |
+| `json`            | Converts an object to JSON format.                            |
+| `keyvalue`        | Converts an object into key-value pairs.                      |
+| `async`           | Resolves Observables or Promises.                             |
+| `i18nPlural`      | Displays strings based on numeric values (internationalized). |
+| `i18nSelect`      | Displays strings based on key-value mappings (internationalized). |
+| `default` (custom)| Provides a default value for undefined inputs.                |
+| `reverse` (custom)| Reverses a string (custom implementation).                    |
+
+Would you like examples for creating additional custom pipes?
 12. **What are observables?**
-    Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require subscription.
+    Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require a subscription.
 
     Example:
 
