@@ -331,6 +331,208 @@ Would you like examples for creating additional custom pipes?
     ```typescript
     import { catchError, retry } from 'rxjs/operators';
     ```
+    ## RxJS Q&A Cheat Sheet
+
+### 1. **What is RxJS?**
+RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using Observables. It helps you work with asynchronous data streams, events, and data flows.
+
+---
+
+### 2. **What is an Observable?**
+An Observable is a data stream that emits values over time. Observables can be created to handle events, HTTP calls, or any asynchronous operation.
+
+#### Example:
+```typescript
+import { Observable } from 'rxjs';
+
+const observable = new Observable(subscriber => {
+  subscriber.next('First value');
+  subscriber.next('Second value');
+  subscriber.complete();
+});
+
+observable.subscribe(value => console.log(value));
+// Output:
+// First value
+// Second value
+```
+
+---
+
+### 3. **What is an Observer?**
+An Observer is an object that listens to an Observable and reacts to its emitted values, errors, or completion.
+
+#### Example:
+```typescript
+const observer = {
+  next: value => console.log(value),
+  error: err => console.error('Error:', err),
+  complete: () => console.log('Completed!')
+};
+
+observable.subscribe(observer);
+```
+
+---
+
+### 4. **What are Subjects in RxJS?**
+A Subject is both an Observable and an Observer. It allows multicasting (sharing the same Observable execution among multiple subscribers).
+
+#### Example:
+```typescript
+import { Subject } from 'rxjs';
+
+const subject = new Subject<number>();
+
+subject.subscribe(value => console.log('Subscriber 1:', value));
+subject.subscribe(value => console.log('Subscriber 2:', value));
+
+subject.next(1);
+subject.next(2);
+// Output:
+// Subscriber 1: 1
+// Subscriber 2: 1
+// Subscriber 1: 2
+// Subscriber 2: 2
+```
+
+---
+
+### 5. **Difference Between `Subject`, `BehaviorSubject`, and `ReplaySubject`?**
+
+| Type             | Description                                                                                      |
+|------------------|--------------------------------------------------------------------------------------------------|
+| `Subject`        | Emits values to all subscribers starting from the time they subscribe.                          |
+| `BehaviorSubject`| Stores the last emitted value and immediately sends it to new subscribers.                       |
+| `ReplaySubject`  | Emits a specified number of previously emitted values to new subscribers.                        |
+
+#### Example:
+```typescript
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
+
+const behaviorSubject = new BehaviorSubject('Initial Value');
+const replaySubject = new ReplaySubject(2);
+
+behaviorSubject.next('Value 1');
+replaySubject.next('Value 1');
+replaySubject.next('Value 2');
+replaySubject.next('Value 3');
+
+behaviorSubject.subscribe(value => console.log('Behavior:', value));
+replaySubject.subscribe(value => console.log('Replay:', value));
+// Output:
+// Behavior: Value 1
+// Replay: Value 2
+// Replay: Value 3
+```
+
+---
+
+### 6. **What is an Operator in RxJS?**
+An Operator is a function that transforms, filters, or combines Observables.
+
+#### Common Operators:
+| **Operator**     | **Description**                                                                 |
+|------------------|-------------------------------------------------------------------------------|
+| `map`            | Transforms each emitted value.                                               |
+| `filter`         | Emits values that pass a condition.                                          |
+| `merge`          | Combines multiple Observables into one.                                      |
+| `concat`         | Concatenates Observables sequentially.                                       |
+| `switchMap`      | Cancels the previous Observable and switches to the latest one.             |
+| `catchError`     | Handles errors in the Observable chain.                                      |
+| `debounceTime`   | Waits for a specified time before emitting a value.                         |
+
+#### Example:
+```typescript
+import { from } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
+
+const numbers = from([1, 2, 3, 4, 5]);
+
+numbers.pipe(
+  filter(n => n % 2 === 0),
+  map(n => n * 2)
+).subscribe(value => console.log(value));
+// Output:
+// 4
+// 8
+```
+
+---
+
+### 7. **What is `switchMap`?**
+`switchMap` cancels the previous Observable and switches to the latest Observable.
+
+#### Example:
+```typescript
+import { of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
+of('User1', 'User2').pipe(
+  switchMap(user => of(`${user} details`))
+).subscribe(data => console.log(data));
+// Output:
+// User2 details
+```
+
+---
+
+### 8. **How to Handle Errors in RxJS?**
+Use `catchError` to handle errors in the Observable chain.
+
+#### Example:
+```typescript
+import { of, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+throwError('Error occurred!').pipe(
+  catchError(err => of(`Handled: ${err}`))
+).subscribe(value => console.log(value));
+// Output:
+// Handled: Error occurred!
+```
+
+---
+
+### 9. **What is the `async` Pipe?**
+The `async` pipe in Angular automatically subscribes to and unsubscribes from Observables in templates.
+
+#### Example:
+```typescript
+@Component({
+  selector: 'app-example',
+  template: `<p>{{ data$ | async }}</p>`
+})
+export class ExampleComponent {
+  data$ = of('Hello RxJS!');
+}
+```
+
+---
+
+### 10. **When to Use RxJS in Angular?**
+- Handling asynchronous events.
+- Managing HTTP requests and responses.
+- Creating reusable streams for user interactions.
+- Implementing real-time data updates.
+
+#### Example with HTTP:
+```typescript
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-http-example',
+  template: `<ul><li *ngFor="let post of posts$ | async">{{ post.title }}</li></ul>`
+})
+export class HttpExampleComponent {
+  posts$ = this.http.get<{ title: string }[]>('https://jsonplaceholder.typicode.com/posts');
+
+  constructor(private http: HttpClient) {}
+}
+```
+
+
 
 14. **Difference between promise and observable:**
 
