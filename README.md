@@ -68,6 +68,7 @@
 - Parent components can access child components' methods or properties directly using @ViewChild.
 - For communication between a parent and its projected content (child elements projected using <ng-content>).
 - For complex state management or data sharing, you can use NGRX Store or BehaviorSubject to maintain shared state across components.
+
   ```html
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -82,7 +83,7 @@ export class StateService {
   }
 }
   ```
-NGRX
+
 6. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
 
