@@ -61,10 +61,12 @@
      ```html
      <input type="email" [(ngModel)]="user.email">
      ```
-Passing Data from one component to another     
-@Input - Parent to Child.
-@output - Child to Parent via @output decorator and EventEmmiter
-@ViewChild - Child to Parent
+*Passing Data from one component to another*     
+- @Input - Parent to Child.
+- @output - Child to Parent via @output decorator and EventEmmiter
+- @ViewChild - Child to Parent
+- Parent components can access child components' methods or properties directly using @ViewChild.
+- For communication between a parent and its projected content (child elements projected using <ng-content>).
 NGRX
 6. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
