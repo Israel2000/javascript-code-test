@@ -8,7 +8,10 @@
    - **Components**: Directives with a template.
    - **Structural directives**: Change the DOM layout by adding or removing elements. (eg. ngIf, ngFor...)
    - **Attribute directives**: Change the appearance or behavior of an element, component, or another directive. (eg. ngClass, ngStyle...)
-
+**Control Flow Template** - build-in control flow for the template in angular 17.
+   - this is the replacement of structural directive.
+   - Syntax @if, @else, @for, and @switch
+   - 
 2. **What is the purpose of the *ngFor directive?**
    The Angular *ngFor directive iterates over a list of items and displays them in the template. Example:
 
@@ -58,7 +61,11 @@
      ```html
      <input type="email" [(ngModel)]="user.email">
      ```
-
+Passing Data from one component to another     
+@Input - Parent to Child.
+@output - Child to Parent via @output decorator and EventEmmiter
+@ViewChild - Child to Parent
+NGRX
 6. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
 
@@ -80,7 +87,7 @@
    })
    export class MyService {}
    ```
-
+providers - classes?
 9. **What is dependency injection in Angular?**
    Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself. Angular’s DI framework resolves services and other objects throughout the application.
 
@@ -329,11 +336,14 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
     });
 
     observable.subscribe(console.log);
+    **Diff b/n Subject and Behavior subject -
+     - BehaviorSubject holds one value. when it is subscribed it emits the value immediately.
+     - A subject doesnt hold a value.?
     ```
 
 13. **What is RxJS?**
     RxJS is a library for reactive programming with Observables, supporting operators for composing asynchronous streams. Example usage with `HttpClient`:
-
+   
     ```typescript
     import { catchError, retry } from 'rxjs/operators';
     ```
@@ -435,7 +445,7 @@ replaySubject.subscribe(value => console.log('Replay:', value));
 ---
 
 ### 6. **What is an Operator in RxJS?**
-An Operator is a function that transforms, filters, or combines Observables.
+An Operator is a function that transforms, filters or combines Observables.
 
 #### Common Operators:
 | **Operator**     | **Description**                                                                 |
@@ -537,10 +547,11 @@ export class HttpExampleComponent {
   constructor(private http: HttpClient) {}
 }
 ```
+14. **How to Upgrade Angualar application?**
+      - follow the link step by step for a higher version: https://update.angular.io/
 
 
-
-14. **Difference between promise and observable:**
+16. **Difference between promise and observable:**
 
 | Feature           | Observable                | Promise              |
 |-------------------|---------------------------|----------------------|
@@ -779,18 +790,30 @@ export class CounterStore extends ComponentStore<State> {
       loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule)
     }
     ```
-
+- **Deferable views, also known as @defer blocks, are a powerful tool that is used to reduce the initial bndle size of application intro in Angular 17.
+     - using this feature we can lazy loading for any html content.
 19. **What is TestBed in Angular?**
     TestBed is an API for unit testing Angular components and services. It simplifies injection, asynchronous behavior, and DOM interactions during tests.
 
 20. **What are reactive and template-driven forms?**
-
+Reactive Forms - provide access to information about giving control through properties and methods provided in each instance.
+   - also known as model-driven forms.
+   - reactive principles and allow you to manage form state and validation programmatically.
+Template-Driven Forms - is the simplest way to build a form in angular.
+   - used in Angular two-way data-binding directive (ngModel) to create and manage the underlying form instance.
+     
 | Feature              | Reactive Forms           | Template-Driven Forms |
 |----------------------|--------------------------|------------------------|
 | Model Setup          | Explicitly defined       | Defined in template   |
 | Data Updates         | Synchronous             | Asynchronous          |
 | Validation           | Defined in component    | Defined in template   |
 | Scalability          | Highly scalable         | Suitable for simple forms |
+
+Form Builder - provides syntactic sugar that shortens creating instances of formControl, FormFroup, or FormArray.
+   - it reduces the amount of boilerplate needed to build complex forms.
+FormGroup - provides its model value as an object reduced from the values of each control in the group.
+FormControl - classes that hold both data and values and validation information of any form element.
+Form Array - manage dynamic forms in angular application.
 
 20. **What is the difference between ngOnChanges and ngDoCheck?**
 
@@ -803,11 +826,14 @@ export class CounterStore extends ComponentStore<State> {
 22. **What is a standalone component?**
 A standalone component is a type of component that is not part of any Angular module. It provides a simplified way to build Angular applications.
 23. **What are Angular Signals?**
-A signal is a wrapper around a value that can notify interested consumers when that value changes. Signals can contain any value, from simple primitives to complex data structures.
-24. **ViewChildren** - Purpose: Allows you to access multiple child components, directives, or DOM elements within a view.
+A signal is a wrapper around a value that can notify interested consumers when that value changes.
+Signals can contain any value, from simple primitives to complex data structures.
+- similar to obeservale& also used state management.
+- Converting Signal to Observale - use the "toObservale" method to turn it into observable. The "toSignal" fiction creates a signal which tracks the value of an observable.
+25. **ViewChildren** - Purpose: Allows you to access multiple child components, directives, or DOM elements within a view.
 Usage: Use it when querying for a collection of elements or components.
-25. **ViewChild**
-26. **HTTPCalls** are used to interact with REST APIs or other HTTP services. The HttpClient module, provided by Angular, makes it easy to perform GET, POST, PUT, DELETE, and other HTTP requests.
+26. **ViewChild**
+27. **HTTPCalls** are used to interact with REST APIs or other HTTP services. The HttpClient module, provided by Angular, makes it easy to perform GET, POST, PUT, DELETE, and other HTTP requests.
     - HTTP Interceptor - used to perform various tasks related to HTTP requests and responses.
          - such as adding headers, handling errors, modifying the request or res data, logging, authentication, etc.
 28. **ng-template** - The <ng-template> directive in Angular defines a template that is not rendered by default but can be programmatically inserted into the DOM. It is typically used for structural directives and dynamic content.
