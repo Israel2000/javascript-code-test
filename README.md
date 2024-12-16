@@ -67,9 +67,13 @@
 - @ViewChild - Child to Parent
 - Parent components can access child components' methods or properties directly using @ViewChild.
 - For communication between a parent and its projected content (child elements projected using <ng-content>).
-- For complex state management or data sharing, you can use NGRX Store or BehaviorSubject to maintain shared state across components.
+## Complex State Management or Data Sharing
 
-  ```typescript
+For complex state management or data sharing, you can use **NGRX Store** or **BehaviorSubject** to maintain shared state across components.
+
+### Example Using `BehaviorSubject`
+
+```typescript
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -82,6 +86,7 @@ export class StateService {
     this.stateSource.next(newState);
   }
 }
+
   ```
 
 6. **What is Angular CLI?**
