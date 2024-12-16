@@ -69,7 +69,7 @@
 - For communication between a parent and its projected content (child elements projected using <ng-content>).
 - For complex state management or data sharing, you can use NGRX Store or BehaviorSubject to maintain shared state across components.
 
-  ```html
+  ```typescript
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -365,6 +365,15 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
     ```typescript
     import { catchError, retry } from 'rxjs/operators';
     ```
+   **Summary of Operators**
+   Operator	When to Use
+   forkJoin	Combine multiple Observables and wait for all to complete. Results are emitted as an array/object.
+   combineLatest	Combine latest values from multiple Observables; updates when any Observable emits a value.
+   zip	Combine values in order from multiple Observables; waits for all to emit a value.
+   merge	Run Observables in parallel and emit values as they arrive.
+   switchMap	Use for sequential or dependent API calls; cancels previous calls if new one is triggered.
+
+
     ## RxJS Q&A Cheat Sheet
 
 ### 1. **What is RxJS?**
