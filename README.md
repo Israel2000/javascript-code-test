@@ -67,6 +67,21 @@
 - @ViewChild - Child to Parent
 - Parent components can access child components' methods or properties directly using @ViewChild.
 - For communication between a parent and its projected content (child elements projected using <ng-content>).
+- For complex state management or data sharing, you can use NGRX Store or BehaviorSubject to maintain shared state across components.
+  ```html
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class StateService {
+  private stateSource = new BehaviorSubject<string>('Initial State');
+  currentState$ = this.stateSource.asObservable();
+
+  updateState(newState: string) {
+    this.stateSource.next(newState);
+  }
+}
+  ```
 NGRX
 6. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
