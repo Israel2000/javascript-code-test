@@ -370,13 +370,26 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
     ```typescript
     import { catchError, retry } from 'rxjs/operators';
     ```
-   **Summary of Operators**
-   Operator	When to Use
-   forkJoin	Combine multiple Observables and wait for all to complete. Results are emitted as an array/object.
-   combineLatest	Combine latest values from multiple Observables; updates when any Observable emits a value.
-   zip	Combine values in order from multiple Observables; waits for all to emit a value.
-   merge	Run Observables in parallel and emit values as they arrive.
-   switchMap	Use for sequential or dependent API calls; cancels previous calls if new one is triggered.
+## Summary of RxJS Operators
+
+| **Operator**    | **When to Use**                                                                                  |
+|------------------|-------------------------------------------------------------------------------------------------|
+| **forkJoin**     | Combine multiple Observables and wait for all to complete. Results are emitted as an array/object. |
+| **combineLatest**| Combine latest values from multiple Observables; updates when any Observable emits a value.     |
+| **zip**          | Combine values in order from multiple Observables; waits for all to emit a value.              |
+| **merge**        | Run Observables in parallel and emit values as they arrive.                                    |
+| **switchMap**    | Use for sequential or dependent API calls; cancels previous calls if a new one is triggered.   |
+
+---
+
+### Explanation
+
+- **forkJoin**: Ideal for scenarios where all Observables must complete before proceeding, such as finalizing multiple API calls.
+- **combineLatest**: Useful for dynamic UI updates that depend on the latest values from multiple streams.
+- **zip**: Ensures the emitted values from multiple Observables align in order, e.g., mapping IDs to corresponding values.
+- **merge**: Handles independent streams running in parallel without waiting for any completion.
+- **switchMap**: Best for handling user-driven or cancelable tasks, such as live search or navigation-triggered API calls.
+
 
 
     ## RxJS Q&A Cheat Sheet
