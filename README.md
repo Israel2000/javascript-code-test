@@ -102,7 +102,8 @@ export class StateService {
    - **ngOnInit**: Called after Angular initializes the component. Suitable for logic initialization and binding resolution.
 
 8. **What is a service?**
-   A service encapsulates common functionality and promotes reusability across modules. Example:
+   -is a class that provides reusable logic, data sharing, or functions that can be used across multiple components, directives,
+   or other services. Services help encapsulate business logic and improve the modularity and maintainability of the application.
 
    ```typescript
    @Injectable({
@@ -110,15 +111,25 @@ export class StateService {
    })
    export class MyService {}
    ```
-providers - classes?
+   When to Use a Service?
+   To fetch or manipulate **data** (e.g., HTTP API calls).
+   To **share data** between components.
+   To perform **utility functions** (e.g., logging, validation).
+   To manage **state**.
+   To separate business logic from the component.
 
-9. **What is dependency injection?**
+10. **What is dependency injection?**
    - Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself.
    - Angular’s DI framework resolves services and other objects throughout the application.
       I.   Dependencies: Services, objects, or values that a class requires to function.
       II.  Injector: The mechanism in Angular that knows how to create and provide these dependencies.
       III. Provider: A configuration that tells the injector how to create a service.
       IV.  Constructor Injection: Dependencies are injected into the constructor of a class.
+     **Key Terms:**
+      @Injectable: Decorator used to mark a class as available for DI.
+      providers: Register a service to make it injectable.
+      root injector: Default injector that registers services globally.
+      constructor injection: Dependencies are passed to the class constructor.
 11. **What are pipes?**
     Pipes transform data in templates. Example:
 
