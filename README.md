@@ -111,10 +111,15 @@ export class StateService {
    export class MyService {}
    ```
 providers - classes?
-9. **What is dependency injection in Angular?**
-   Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself. Angular’s DI framework resolves services and other objects throughout the application.
 
-10. **What are pipes?**
+9. **What is dependency injection?**
+   - Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself.
+   - Angular’s DI framework resolves services and other objects throughout the application.
+      I.   Dependencies: Services, objects, or values that a class requires to function.
+      II.  Injector: The mechanism in Angular that knows how to create and provide these dependencies.
+      III. Provider: A configuration that tells the injector how to create a service.
+      IV.  Constructor Injection: Dependencies are injected into the constructor of a class.
+11. **What are pipes?**
     Pipes transform data in templates. Example:
 
     ```typescript
@@ -126,7 +131,7 @@ providers - classes?
     }
     ```
 
-11. **Difference between pure and impure pipes:**
+12. **Difference between pure and impure pipes:**
    
     - **Pure pipes**: Triggered only when input values or references change.
     - **Impure pipes**: Called on every change detection cycle, even if inputs remain unchanged.
