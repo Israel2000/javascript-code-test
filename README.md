@@ -2,7 +2,7 @@
 
 ### Angular FAQs
 
-#1. **What are directives?**
+### 1. **What are directives?**
    Directives add behavior to an existing DOM element or component instance. There are mainly three kinds of directives:
    
    - **Components**: Directives with a template.
@@ -12,7 +12,7 @@
    - this is the replacement of structural directive.
    - Syntax @if, @else, @for, and @switch
      
-#2. **What are lifecycle hooks available in Angular?**
+### 2. **What are lifecycle hooks available in Angular?**
    Angular components have a lifecycle, with various hooks available:
 
    - `ngOnChanges`: Called when data-bound properties change.
@@ -24,7 +24,7 @@
    - `ngAfterViewChecked`: Called after checking the component’s views and child views.
    - `ngOnDestroy`: Used for cleanup before Angular destroys a component.
 
-#3. **What is data binding?**
+### 3. **What is data binding?**
    Data binding facilitates communication between a component and the DOM. Angular supports four forms:
 
    - **Interpolation**: Adds property values from the component using `{{ value }}`.
@@ -69,17 +69,17 @@
          }
      ```
 
-#4. **What is Angular CLI?**
+### 4. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
 
   
 
-#5. **Difference between constructor and ngOnInit:**
+### 5. **Difference between constructor and ngOnInit:**
 
    - **Constructor**: Initializes class members and sets up dependency injection. Avoid performing heavy tasks here.
    - **ngOnInit**: Called after Angular initializes the component. Suitable for logic initialization and binding resolution.
 
-#6. **What is a service?**
+### 6. **What is a service?**
    -is a class that provides reusable logic, data sharing, or functions that can be used across multiple components, directives,
    or other services. Services help encapsulate business logic and improve the modularity and maintainability of the application.
 
@@ -96,7 +96,7 @@
    To manage **state**.
    To separate business logic from the component.
 
-#7. **What is dependency injection?**
+### 7. **What is dependency injection?**
    - Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself.
    - Angular’s DI framework resolves services and other objects throughout the application.
       I.   Dependencies: Services, objects, or values that a class requires to function.
@@ -108,7 +108,7 @@
       providers: Register a service to make it injectable.
       root injector: Default injector that registers services globally.
       constructor injection: Dependencies are passed to the class constructor.
-#8. **What are pipes?**
+### 8. **What are pipes?**
     Pipes transform data in templates. Example:
 
     ```typescript
@@ -119,6 +119,7 @@
       birthday = new Date(1987, 6, 18);
     }
     ```
+    
       **Difference between pure and impure pipes:**
    
     - **Pure pipes**: Triggered only when input values or references change.
@@ -146,7 +147,7 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
 | `reverse` (custom)| Reverses a string (custom implementation).                    |
 
 ---
-#9.  **What is routing?**
+### 9.  **What is routing?**
 - routing is a URL pattern matching.
 - routing used to handle the navigation from one view to the next
      - routes- this is the class used to map the component & path.
@@ -154,7 +155,7 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
      - routerLink- this is the directive to navigate different routes.
 -Routing Gurards - guards are interfaces already available natively in angular that let us control access to routes based on conditions we provide in the class of the interface.
 
-12. **What are observables?**
+### 10. **What are observables?**
     Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require a subscription.
    - An Observer is an object that listens to an Observable and reacts to its emitted values, errors, or completion.
 
@@ -177,7 +178,7 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
  
     ```
 
-13. **What is RxJS?**
+### 11. **What is RxJS?**
     RxJS is a library for reactive programming with Observables, supporting operators for composing asynchronous streams. Example usage with `HttpClient`:
     - An Operator is a function that transforms, filters or combines Observables.
     - **What is the `async` Pipe?**
