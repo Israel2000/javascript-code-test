@@ -2,7 +2,7 @@
 
 ### Angular FAQs
 
-1. **What are directives?**
+#1. **What are directives?**
    Directives add behavior to an existing DOM element or component instance. There are mainly three kinds of directives:
    
    - **Components**: Directives with a template.
@@ -11,26 +11,8 @@
 **Control Flow Template** - build-in control flow for the template in angular 17.
    - this is the replacement of structural directive.
    - Syntax @if, @else, @for, and @switch
-   - 
-2. **What is the purpose of the *ngFor directive?**
-   The Angular *ngFor directive iterates over a list of items and displays them in the template. Example:
-
-   ```html
-   <li *ngFor="let user of users">
-     {{ user }}
-   </li>
-   ```
-   Here, `user` is a template input variable used for each iteration.
-
-3. **What is the purpose of the *ngIf directive?**
-   The *ngIf directive conditionally includes or excludes elements in the DOM based on a truthy/falsy condition. Example:
-
-   ```html
-   <p *ngIf="user.age > 18">You are not eligible for a student pass!</p>
-   ```
-   Angular adds or removes the paragraph element from the DOM for improved performance.
-
-4. **What are lifecycle hooks available in Angular?**
+     
+#2. **What are lifecycle hooks available in Angular?**
    Angular components have a lifecycle, with various hooks available:
 
    - `ngOnChanges`: Called when data-bound properties change.
@@ -42,7 +24,7 @@
    - `ngAfterViewChecked`: Called after checking the component’s views and child views.
    - `ngOnDestroy`: Used for cleanup before Angular destroys a component.
 
-5. **What is data binding?**
+#3. **What is data binding?**
    Data binding facilitates communication between a component and the DOM. Angular supports four forms:
 
    - **Interpolation**: Adds property values from the component using `{{ value }}`.
@@ -61,56 +43,52 @@
      ```html
      <input type="email" [(ngModel)]="user.email">
      ```
-*Passing Data from one component to another*     
-- @Input - Parent to Child.
-- @output - Child to Parent via @output decorator and EventEmmiter
-- @ViewChild - Child to Parent
-- Parent components can access child components' methods or properties directly using @ViewChild.
-- For communication between a parent and its projected content (child elements projected using <ng-content>).
-## Complex State Management or Data Sharing
+      **Passing Data from one component to another**    
+      - @Input - Parent to Child.
+      - @output - Child to Parent via @output decorator and EventEmmiter
+      - @ViewChild - Child to Parent
+      - Parent components can access child components' methods or properties directly using @ViewChild.
+      - For communication between a parent and its projected content (child elements projected using <ng-content>).
+      **Complex State Management or Data Sharing**
+       you can use **NGRX Store** or **BehaviorSubject** to maintain a shared state across components.
 
-For complex state management or data sharing, you can use **NGRX Store** or **BehaviorSubject** to maintain shared state across components.
+      **Example Using `BehaviorSubject`**
 
-### Example Using `BehaviorSubject`
+         ```typescript
+         import { Injectable } from '@angular/core';
+         import { BehaviorSubject } from 'rxjs';
+         
+         @Injectable({ providedIn: 'root' })
+         export class StateService {
+           private stateSource = new BehaviorSubject<string>('Initial State');
+           currentState$ = this.stateSource.asObservable();
+         
+           updateState(newState: string) {
+             this.stateSource.next(newState);
+           }
+         }
+     ```
 
-```typescript
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-
-@Injectable({ providedIn: 'root' })
-export class StateService {
-  private stateSource = new BehaviorSubject<string>('Initial State');
-  currentState$ = this.stateSource.asObservable();
-
-  updateState(newState: string) {
-    this.stateSource.next(newState);
-  }
-}
-
-  ```
-
-6. **What is Angular CLI?**
+#4. **What is Angular CLI?**
    Angular CLI (Command Line Interface) helps scaffold and build Angular apps efficiently. Install it via:
 
-   ```bash
-   npm install -g @angular/cli
-   ```
+  
 
-7. **Difference between constructor and ngOnInit:**
+#5. **Difference between constructor and ngOnInit:**
 
    - **Constructor**: Initializes class members and sets up dependency injection. Avoid performing heavy tasks here.
    - **ngOnInit**: Called after Angular initializes the component. Suitable for logic initialization and binding resolution.
 
-8. **What is a service?**
+#6. **What is a service?**
    -is a class that provides reusable logic, data sharing, or functions that can be used across multiple components, directives,
    or other services. Services help encapsulate business logic and improve the modularity and maintainability of the application.
 
-   ```typescript
-   @Injectable({
-     providedIn: 'root',
-   })
-   export class MyService {}
-   ```
+      ```typescript
+      @Injectable({
+        providedIn: 'root',
+      })
+      export class MyService {}
+      ```
    When to Use a Service?
    To fetch or manipulate **data** (e.g., HTTP API calls).
    To **share data** between components.
@@ -118,7 +96,7 @@ export class StateService {
    To manage **state**.
    To separate business logic from the component.
 
-10. **What is dependency injection?**
+#7. **What is dependency injection?**
    - Dependency Injection (DI) is a design pattern where a class receives its dependencies externally instead of creating them itself.
    - Angular’s DI framework resolves services and other objects throughout the application.
       I.   Dependencies: Services, objects, or values that a class requires to function.
@@ -130,7 +108,7 @@ export class StateService {
       providers: Register a service to make it injectable.
       root injector: Default injector that registers services globally.
       constructor injection: Dependencies are passed to the class constructor.
-11. **What are pipes?**
+#8. **What are pipes?**
     Pipes transform data in templates. Example:
 
     ```typescript
@@ -141,198 +119,11 @@ export class StateService {
       birthday = new Date(1987, 6, 18);
     }
     ```
-
-12. **Difference between pure and impure pipes:**
+      **Difference between pure and impure pipes:**
    
     - **Pure pipes**: Triggered only when input values or references change.
     - **Impure pipes**: Called on every change detection cycle, even if inputs remain unchanged.
 Here’s a list of commonly used **Angular pipes** along with their definitions and usage:
-
----
-
-### **1. `uppercase` Pipe**
-- **Definition**: Transforms a string to uppercase.
-- **Usage**:
-  ```html
-  <p>{{ 'hello world' | uppercase }}</p>
-  ```
-  **Output**: `HELLO WORLD`
-
----
-
-### **2. `lowercase` Pipe**
-- **Definition**: Transforms a string to lowercase.
-- **Usage**:
-  ```html
-  <p>{{ 'HELLO WORLD' | lowercase }}</p>
-  ```
-  **Output**: `hello world`
-
----
-
-### **3. `titlecase` Pipe**
-- **Definition**: Capitalizes the first letter of each word in a string.
-- **Usage**:
-  ```html
-  <p>{{ 'hello world' | titlecase }}</p>
-  ```
-  **Output**: `Hello World`
-
----
-
-### **4. `currency` Pipe**
-- **Definition**: Formats a number as a currency value.
-- **Usage**:
-  ```html
-  <p>{{ 1234.56 | currency:'USD':'symbol':'1.2-2' }}</p>
-  ```
-  **Output**: `$1,234.56`
-
----
-
-### **5. `date` Pipe**
-- **Definition**: Formats a date value according to locale rules.
-- **Usage**:
-  ```html
-  <p>{{ '2024-12-15' | date:'long' }}</p>
-  ```
-  **Output**: `December 15, 2024`
-
----
-
-### **6. `percent` Pipe**
-- **Definition**: Formats a number as a percentage.
-- **Usage**:
-  ```html
-  <p>{{ 0.25 | percent }}</p>
-  ```
-  **Output**: `25%`
-
----
-
-### **7. `decimal` Pipe**
-- **Definition**: Formats a number with customizable decimal points.
-- **Usage**:
-  ```html
-  <p>{{ 1234.567 | number:'1.1-2' }}</p>
-  ```
-  **Output**: `1,234.57`
-
----
-
-### **8. `slice` Pipe**
-- **Definition**: Extracts a portion of a string or an array.
-- **Usage**:
-  ```html
-  <p>{{ 'hello world' | slice:0:5 }}</p>
-  ```
-  **Output**: `hello`
-
----
-
-### **9. `json` Pipe**
-- **Definition**: Converts a JavaScript object or array to JSON format.
-- **Usage**:
-  ```html
-  <pre>{{ { name: 'Angular', version: 14 } | json }}</pre>
-  ```
-  **Output**:
-  ```json
-  {
-    "name": "Angular",
-    "version": 14
-  }
-  ```
-
----
-
-### **10. `keyvalue` Pipe**
-- **Definition**: Converts an object into an array of key-value pairs.
-- **Usage**:
-  ```html
-  <div *ngFor="let item of { name: 'Angular', version: 14 } | keyvalue">
-    {{ item.key }}: {{ item.value }}
-  </div>
-  ```
-  **Output**:
-  ```
-  name: Angular
-  version: 14
-  ```
-
----
-
-### **11. `async` Pipe**
-- **Definition**: Subscribes to an Observable or Promise and returns the emitted value.
-- **Usage**:
-  ```html
-  <p>{{ asyncData$ | async }}</p>
-  ```
-  **Output**: Resolves and displays the value of the Observable/Promise.
-
----
-
-### **12. `i18nPlural` Pipe**
-- **Definition**: Displays a string based on a numeric value using internationalization rules.
-- **Usage**:
-  ```html
-  <p>{{ 3 | i18nPlural: { '=0': 'no items', '=1': '1 item', 'other': '# items' } }}</p>
-  ```
-  **Output**: `3 items`
-
----
-
-### **13. `i18nSelect` Pipe**
-- **Definition**: Displays a string based on a key-value mapping for internationalization.
-- **Usage**:
-  ```html
-  <p>{{ gender | i18nSelect: { male: 'Mr.', female: 'Ms.', other: 'Mx.' } }}</p>
-  ```
-  **Output**: `Mr.` (if `gender = 'male'`)
-
----
-
-### **14. `default` Pipe (Custom Pipe Example)**
-- **Definition**: A custom pipe used to provide default values.
-- **Implementation**:
-  ```typescript
-  import { Pipe, PipeTransform } from '@angular/core';
-
-  @Pipe({ name: 'default' })
-  export class DefaultPipe implements PipeTransform {
-    transform(value: any, defaultValue: any): any {
-      return value || defaultValue;
-    }
-  }
-  ```
-  **Usage**:
-  ```html
-  <p>{{ user.name | default:'Guest' }}</p>
-  ```
-
----
-
-### **15. `custom` Pipe**
-- **Definition**: A user-defined pipe tailored to specific needs.
-- **Example**:
-  To create a pipe for reversing strings:
-  ```typescript
-  import { Pipe, PipeTransform } from '@angular/core';
-
-  @Pipe({ name: 'reverse' })
-  export class ReversePipe implements PipeTransform {
-    transform(value: string): string {
-      return value.split('').reverse().join('');
-    }
-  }
-  ```
-  **Usage**:
-  ```html
-  <p>{{ 'Angular' | reverse }}</p>
-  ```
-  **Output**: `ralugnA`
-
----
 
 ### **Summary**
 
@@ -354,15 +145,18 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
 | `default` (custom)| Provides a default value for undefined inputs.                |
 | `reverse` (custom)| Reverses a string (custom implementation).                    |
 
-11.  what is routing? 
+---
+#9.  **What is routing?**
 - routing is a URL pattern matching.
 - routing used to handle the navigation from one view to the next
      - routes- this is the class used to map the component & path.
      - router-outlet- this is the place to load the active component.
      - routerLink- this is the directive to navigate different routes.
 -Routing Gurards - guards are interfaces already available natively in angular that let us control access to routes based on conditions we provide in the class of the interface.
+
 12. **What are observables?**
     Observables provide a mechanism for asynchronous programming and event handling, supporting multiple values over time. They are declarative and require a subscription.
+   - An Observer is an object that listens to an Observable and reacts to its emitted values, errors, or completion.
 
     Example:
 
@@ -378,15 +172,26 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
     **Diff b/n Subject and Behavior subject -
      - BehaviorSubject holds one value. when it is subscribed it emits the value immediately.
      - A subject doesnt hold a value.?
+     - A Subject is both an Observable and an Observer. It allows multicasting (sharing the same Observable execution among multiple subscribers).
+     - **How to Handle Errors in RxJS?** Use `catchError` to handle errors in the Observable chain.
+ 
     ```
 
 13. **What is RxJS?**
     RxJS is a library for reactive programming with Observables, supporting operators for composing asynchronous streams. Example usage with `HttpClient`:
-   
+    - An Operator is a function that transforms, filters or combines Observables.
+    - **What is the `async` Pipe?**
+      The `async` pipe in Angular automatically subscribes to and unsubscribes from Observables in templates.
     ```typescript
     import { catchError, retry } from 'rxjs/operators';
+    
     ```
-## Summary of RxJS Operators
+     **When to Use RxJS in Angular?**
+      - Handling asynchronous events.
+      - Managing HTTP requests and responses.
+      - Creating reusable streams for user interactions.
+      - Implementing real-time data updates.
+      **Summary of RxJS Operators**
 
 | **Operator**    | **When to Use**                                                                                  |
 |------------------|-------------------------------------------------------------------------------------------------|
@@ -396,86 +201,6 @@ Here’s a list of commonly used **Angular pipes** along with their definitions 
 | **merge**        | Run Observables in parallel and emit values as they arrive.                                    |
 | **switchMap**    | Use for sequential or dependent API calls; cancels previous calls if a new one is triggered.   |
 
----
-
-### Explanation
-
-- **forkJoin**: Ideal for scenarios where all Observables must complete before proceeding, such as finalizing multiple API calls.
-- **combineLatest**: Useful for dynamic UI updates that depend on the latest values from multiple streams.
-- **zip**: Ensures the emitted values from multiple Observables align in order, e.g., mapping IDs to corresponding values.
-- **merge**: Handles independent streams running in parallel without waiting for any completion.
-- **switchMap**: Best for handling user-driven or cancelable tasks, such as live search or navigation-triggered API calls.
-
-
-
-    ## RxJS Q&A Cheat Sheet
-
-### 1. **What is RxJS?**
-RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using Observables. It helps you work with asynchronous data streams, events, and data flows.
-
----
-
-### 2. **What is an Observable?**
-An Observable is a data stream that emits values over time. Observables can be created to handle events, HTTP calls, or any asynchronous operation.
-
-#### Example:
-```typescript
-import { Observable } from 'rxjs';
-
-const observable = new Observable(subscriber => {
-  subscriber.next('First value');
-  subscriber.next('Second value');
-  subscriber.complete();
-});
-
-observable.subscribe(value => console.log(value));
-// Output:
-// First value
-// Second value
-```
-
----
-
-### 3. **What is an Observer?**
-An Observer is an object that listens to an Observable and reacts to its emitted values, errors, or completion.
-
-#### Example:
-```typescript
-const observer = {
-  next: value => console.log(value),
-  error: err => console.error('Error:', err),
-  complete: () => console.log('Completed!')
-};
-
-observable.subscribe(observer);
-```
-
----
-
-### 4. **What are Subjects in RxJS?**
-A Subject is both an Observable and an Observer. It allows multicasting (sharing the same Observable execution among multiple subscribers).
-
-#### Example:
-```typescript
-import { Subject } from 'rxjs';
-
-const subject = new Subject<number>();
-
-subject.subscribe(value => console.log('Subscriber 1:', value));
-subject.subscribe(value => console.log('Subscriber 2:', value));
-
-subject.next(1);
-subject.next(2);
-// Output:
-// Subscriber 1: 1
-// Subscriber 2: 1
-// Subscriber 1: 2
-// Subscriber 2: 2
-```
-
----
-
-### 5. **Difference Between `Subject`, `BehaviorSubject`, and `ReplaySubject`?**
 
 | Type             | Description                                                                                      |
 |------------------|--------------------------------------------------------------------------------------------------|
@@ -483,30 +208,9 @@ subject.next(2);
 | `BehaviorSubject`| Stores the last emitted value and immediately sends it to new subscribers.                       |
 | `ReplaySubject`  | Emits a specified number of previously emitted values to new subscribers.                        |
 
-#### Example:
-```typescript
-import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
-const behaviorSubject = new BehaviorSubject('Initial Value');
-const replaySubject = new ReplaySubject(2);
-
-behaviorSubject.next('Value 1');
-replaySubject.next('Value 1');
-replaySubject.next('Value 2');
-replaySubject.next('Value 3');
-
-behaviorSubject.subscribe(value => console.log('Behavior:', value));
-replaySubject.subscribe(value => console.log('Replay:', value));
-// Output:
-// Behavior: Value 1
-// Replay: Value 2
-// Replay: Value 3
-```
-
----
 
 ### 6. **What is an Operator in RxJS?**
-An Operator is a function that transforms, filters or combines Observables.
 
 #### Common Operators:
 | **Operator**     | **Description**                                                                 |
@@ -519,79 +223,7 @@ An Operator is a function that transforms, filters or combines Observables.
 | `catchError`     | Handles errors in the Observable chain.                                      |
 | `debounceTime`   | Waits for a specified time before emitting a value.                         |
 
-#### Example:
-```typescript
-import { from } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
 
-const numbers = from([1, 2, 3, 4, 5]);
-
-numbers.pipe(
-  filter(n => n % 2 === 0),
-  map(n => n * 2)
-).subscribe(value => console.log(value));
-// Output:
-// 4
-// 8
-```
-
----
-
-### 7. **What is `switchMap`?**
-`switchMap` cancels the previous Observable and switches to the latest Observable.
-
-#### Example:
-```typescript
-import { of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-
-of('User1', 'User2').pipe(
-  switchMap(user => of(`${user} details`))
-).subscribe(data => console.log(data));
-// Output:
-// User2 details
-```
-
----
-
-### 8. **How to Handle Errors in RxJS?**
-Use `catchError` to handle errors in the Observable chain.
-
-#### Example:
-```typescript
-import { of, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
-throwError('Error occurred!').pipe(
-  catchError(err => of(`Handled: ${err}`))
-).subscribe(value => console.log(value));
-// Output:
-// Handled: Error occurred!
-```
-
----
-
-### 9. **What is the `async` Pipe?**
-The `async` pipe in Angular automatically subscribes to and unsubscribes from Observables in templates.
-
-#### Example:
-```typescript
-@Component({
-  selector: 'app-example',
-  template: `<p>{{ data$ | async }}</p>`
-})
-export class ExampleComponent {
-  data$ = of('Hello RxJS!');
-}
-```
-
----
-
-### 10. **When to Use RxJS in Angular?**
-- Handling asynchronous events.
-- Managing HTTP requests and responses.
-- Creating reusable streams for user interactions.
-- Implementing real-time data updates.
 
 #### Example with HTTP:
 ```typescript
